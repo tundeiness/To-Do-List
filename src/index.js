@@ -1,6 +1,6 @@
 
-
-let lists = [{
+const LOCAL_STORAGE_LIST_KEY = 'task.lists';
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [{
     id: 1,
     name: 'test'
 }];
@@ -17,6 +17,7 @@ const newListInput = document.querySelector('[data-new-list-input]');
     const list = createList(listName);
     newListInput.value = null;
     lists.push(list);
+    save();
     todoList();
 });
 
@@ -36,6 +37,10 @@ const listsContainer = document.querySelector('[data-lists]');
     })
 
   
+};
+
+const save = () => {
+    localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
 };
 
 const clearElement = (element) =>{
