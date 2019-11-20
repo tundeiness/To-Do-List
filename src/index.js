@@ -1,3 +1,4 @@
+import task from './task';
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
@@ -8,6 +9,7 @@ const listsContainer = document.querySelector('[data-lists]');
 const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
 const deleteListButton = document.querySelector('[data-delete-list-button]');
+const createList = (name) => ({ id: Date.now().toString(), name, tasks: [] });
 
 const addingEntry = () => {
   listsContainer.addEventListener('click', (e) => {
@@ -37,8 +39,20 @@ const addingEntry = () => {
   });
 };
 
-const todoList = () => {
-  clearElement(listsContainer);
+const taskForm = task();
+taskForm.getTaskForm().addEventListener('submit', (e) => {
+  e.preventDefault();
+  const taskName = taskForm.getTaskInput().value;
+  if (taskName == null || taskName === '') return;
+  const tks = taskForm.createTask(taskName);
+  taskForm.getTaskInput().value = null;
+  const selectedList = lists.find((list) => list.id === selectedListId);
+  selectedList.task.push(tks);
+  save();
+  todoList();
+});
+
+function renderList() {
   lists.forEach((list) => {
     const listElement = document.createElement('li');
     listElement.dataset.listId = list.id;
@@ -50,20 +64,41 @@ const todoList = () => {
     }
     listsContainer.appendChild(listElement);
   });
-};
-
-const save = () => {
-  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
-  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
-};
+}
 
 const clearElement = (element) => {
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
 };
+const taskTemplate = document.getElementById('task-template');
+function renderTasks(task) {
+  tasks.tasks.forEach((t) => {
+    const taskElement = document.importNode(taskTemplate.content, true);
+  });
+}
 
-const createList = (name) => ({id: Date.now().toString(), name: name, tasks: []});
+const todoList = () => {
+  clearElement(listsContainer);
+  renderList();
+  const selectedList = lists.find((list) => list.id === selectedListId);
+  const tasking = task();
+  if (selectedListId == null) {
+    tasking.getListContainer().style.display = 'none';
+  } else {
+    tasking.getListContainer().style.display = ' ';
+    tasking.getListTitle().innerText = selectedList.name;
+  }
+  clearElement(tasking.getTaskContainer());
+  renderTasks(selectedList);
+};
+
+
+const save = () => {
+  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
+  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
+};
+
 
 todoList();
 addingEntry();

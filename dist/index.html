@@ -9,48 +9,54 @@
   <title>To-Do List</title>
 </head>
 <body>
-<div class="container-fluid h-100">  
-<div class="row h-100">  
-<div class='all-tasks col-4 bg-dark p-3'>
-  <h2 class='class-list-title text-white'>My lists</h2>
-  <ul class = 'task-list list-group' data-lists>
+<div class="container-fluid h-100">
+  <div class="row h-100">
+      <div class='all-tasks col-4 bg-dark p-3'>
+        <h2 class='class-list-title text-white'>My lists</h2>
+        <ul class = 'task-list list-group' data-lists>
 
-  </ul>
-  <form action="" data-new-list-form>
-    <div class="input-group mb-3 mt-4">
-    <input type='text' class='new-list form-control' placeholder="Add new list" data-new-list-input/>
-    <div class="input-group-append">
-    <button class='btn-list btn btn-outline-secondary'>Add list</button>
-  </div>
-    </div>
-  </form>
-  <button class='btn-delete btn btn-danger' data-delete-list-button>Delete list</button>
-</div>
-
-
-<div class='todo-list col-8 bg-light p-3'>
-  <div class='todo-header'>
-    <h2 class='list-title'>My tasks</h2>
-  </div>
-
-  <div class='todo-body'>
-    <div class='tasks'>
-      <div class='task'>
-      </div>
-    </div>
-    
-    <div class='new-task-creator'>
-      <form class="input-group mb-3 mt-4">
-        <input type="text" class='new-list form-control' placeholder="Add new task"/>
-        <div class="input-group-append">
-        <button class='btn-task btn btn-outline-secondary'>Add task</button>
+        </ul>
+        <form action="" data-new-list-form>
+          <div class="input-group mb-3 mt-4">
+          <input type='text' class='new-list form-control' placeholder="Add new list" data-new-list-input/>
+          <div class="input-group-append">
+          <button class='btn-list btn btn-outline-secondary'>Add list</button>
         </div>
-      </form>
-    </div>
+          </div>
+        </form>
+        <button class='btn-delete btn btn-danger' data-delete-list-button>Delete list</button>
+      </div>
+
+
+      <div class='todo-list col-8 bg-light p-3' data-container>
+        <div class='todo-header'>
+          <h2 class='list-title' data-title>My tasks</h2>
+        </div>
+
+        <div class='todo-body'>
+            <div class='tasks' data-tasks>
+              <div class='task'>
+              </div>
+            </div>
+
+            <div class='new-task-creator' data-task-form>
+              <form class="input-group mb-3 mt-4">
+                <input type="text" class='new-list form-control'
+                placeholder="Add new task" data-task-input/>
+                <div class="input-group-append">
+                <button class='btn-task btn btn-outline-secondary'>Add task</button>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
   </div>
 </div>
-</div>
-</div>
+  <template id='task-template'>
+    <div class="task">
+
+    </div>
+  </template>
 
   <script src='main.js'></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
