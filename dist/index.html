@@ -4,24 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>To-Do List</title>
 </head>
 <body>
-<div class='all-tasks'>
-  <h2 class='class-list-title'>My lists</h2>
-  <ul class = 'task-list' data-lists>
+<div class="container-fluid h-100">  
+<div class="row h-100">  
+<div class='all-tasks col-4 bg-dark p-3'>
+  <h2 class='class-list-title text-white'>My lists</h2>
+  <ul class = 'task-list list-group' data-lists>
 
   </ul>
   <form action="" data-new-list-form>
-    <input type='text' class='new-list' placeholder="Add new list" data-new-list-input/>
-    <button class='btn-list'>+</button>
+    <div class="input-group mb-3 mt-4">
+    <input type='text' class='new-list form-control' placeholder="Add new list" data-new-list-input/>
+    <div class="input-group-append">
+    <button class='btn-list btn btn-outline-secondary'>Add list</button>
+  </div>
+    </div>
   </form>
+  <button class='btn-delete btn btn-danger' data-delete-list-button>Delete list</button>
 </div>
 
-<div class='todo-list'>
+
+<div class='todo-list col-8 bg-light p-3'>
   <div class='todo-header'>
-    <h2 class='list-title'></h2>
+    <h2 class='list-title'>My tasks</h2>
   </div>
 
   <div class='todo-body'>
@@ -29,14 +38,18 @@
       <div class='task'>
       </div>
     </div>
-
+    
     <div class='new-task-creator'>
-      <form>
-        <input type="text" class='new-list' placeholder="Add new task"/>
-        <button class='btn-task'>+</button>
+      <form class="input-group mb-3 mt-4">
+        <input type="text" class='new-list form-control' placeholder="Add new task"/>
+        <div class="input-group-append">
+        <button class='btn-task btn btn-outline-secondary'>Add task</button>
+        </div>
       </form>
     </div>
   </div>
+</div>
+</div>
 </div>
 
   <script src='main.js'></script>

@@ -1,14 +1,32 @@
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
-let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [{
-    id: 1,
-    name: 'test'
-}];
+const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
+let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
+
+const listsContainer = document.querySelector('[data-lists]');
+const newListForm = document.querySelector('[data-new-list-form]');
+const newListInput = document.querySelector('[data-new-list-input]');
+const deleteListButton = document.querySelector('[data-delete-list-button]');
 
 const addingEntry = () => {
 
-const newListForm = document.querySelector('[data-new-list-form]');
-const newListInput = document.querySelector('[data-new-list-input]');
+
+
+  listsContainer.addEventListener('click', e => {
+    if(e.target.tagName.toLowerCase() === 'li'){
+      selectedListId = e.target.dataset.listId
+      save();
+      todoList();
+    }
+  });
+
+  deleteListButton.addEventListener('click', e => {
+      lists = lists.filter(list => list.id !== selectedListId);
+      selectedListId = null;
+      save();
+      todoList();
+  });
 
   newListForm.addEventListener('submit', e =>{
     e.preventDefault();
@@ -25,14 +43,16 @@ const newListInput = document.querySelector('[data-new-list-input]');
 
 const todoList = () => {
 
-const listsContainer = document.querySelector('[data-lists]');
-
     clearElement(listsContainer)
     lists.forEach(list => {
         const listElement = document.createElement('li');
         listElement.dataset.listId =list.id;
-        listElement.classList.add('list-name');
+        listElement.classList.add('list-group-item');
         listElement.innerText = list.name;
+        if(list.id === selectedListId){
+            console.log(selectedListId);
+        listElement.classList.add('active');
+        }
         listsContainer.appendChild(listElement);
     })
 
@@ -41,6 +61,7 @@ const listsContainer = document.querySelector('[data-lists]');
 
 const save = () => {
     localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
+    localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
 };
 
 const clearElement = (element) =>{
