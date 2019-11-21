@@ -13,6 +13,7 @@ const toDoList = () => {
     getListForm: () => newListForm,
     getListInput: () => newListInput,
     getDeleteItems: () => deleteListButton,
+    createList: (name) => ({ id: Date.now().toString(), name, tasks: [] }),
     // getTaskContainer: () => taskContainer,
     // getTaskForm: () => newTaskForm,
     // getTaskInput: () => taskInput,

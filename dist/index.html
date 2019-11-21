@@ -28,7 +28,7 @@
       </div>
 
 
-      <div class='todo-list col-8 bg-light p-3' data-container>
+      <div class='todo-list col-8 bg-light p-3' data-list-container>
         <div class='todo-header'>
           <h2 class='list-title' data-title>My tasks</h2>
         </div>
@@ -56,6 +56,14 @@
       </div>
   </div>
 </div>
+<template id='task-template'>
+  <div class='task'>
+    <input type='checkbox'/>
+    <label>
+      <span class="custom-checkbox"></span>
+    </label>
+  </div>
+</template>
 
   <script src='main.js'></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
