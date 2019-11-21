@@ -36,7 +36,7 @@ function renderList() {
       listElement.classList.add('active');
       console.log(listElement);
     }
-    todo.getListsContainer.appendChild(listElement);
+    todo.getListsContainer().appendChild(listElement);
   });
 }
 
@@ -47,7 +47,7 @@ function saveAndRender() {
 }
 
 const addingEntry = () => {
-  todolist.listsContainer.addEventListener('click', (e) => {
+  todolist.getListsContainer().addEventListener('click', (e) => {
     if (e.target.tagName.toLowerCase() === 'li') {
       selectedListId = e.target.dataset.listId;
       // save();
@@ -58,7 +58,7 @@ const addingEntry = () => {
   });
 
 
-  todolist.getDeleteItems.addEventListener('click', (e) => {
+  todolist.getDeleteItems().addEventListener('click', (e) => {
     e.preventDefault();
     lists = lists.filter((list) => list.id !== selectedListId);
     selectedListId = null;
@@ -68,12 +68,12 @@ const addingEntry = () => {
     // todoList();
   });
 
-  todolist.newListForm.addEventListener('submit', (e) => {
+  todolist.getListForm().addEventListener('submit', (e) => {
     e.preventDefault();
-    const listName = todolist.newListInput.value;
+    const listName = todolist.getListInput().value;
     if (listName == null || listName === '') return;
     const list = todolist.createList(listName);
-    todolist.newListInput.value = null;
+    todolist.getListInput().value = null;
     lists.push(list);
     saveAndRender();
     // save();
@@ -128,7 +128,7 @@ function renderTasks(selectedList) {
 
 
 function render() {
-  clearElement(todolist.listsContainer);
+  clearElement(todolist.getListsContainer());
   renderList();
   const selectedList = lists.find((list) => list.id === selectedListId);
   // const tasking = tasks();
