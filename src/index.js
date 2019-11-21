@@ -1,17 +1,19 @@
 import task from './task';
+import todolist from './todo';
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 
-const listsContainer = document.querySelector('[data-lists]');
-const newListForm = document.querySelector('[data-new-list-form]');
-const newListInput = document.querySelector('[data-new-list-input]');
+// const listsContainer = document.querySelector('[data-lists]');
+// const newListForm = document.querySelector('[data-new-list-form]');
+// const newListInput = document.querySelector('[data-new-list-input]');
 const deleteListButton = document.querySelector('[data-delete-list-button]');
 const createList = (name) => ({ id: Date.now().toString(), name, tasks: [] });
 const completedTask = document.querySelector('[data-completed-task]');
 const taskForm = task();
+const todo = todolist();
 
 const save = () => {
   localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
@@ -19,11 +21,12 @@ const save = () => {
 };
 
 const addingEntry = () => {
-  listsContainer.addEventListener('click', (e) => {
+  todolist.listsContainer.addEventListener('click', (e) => {
     if (e.target.tagName.toLowerCase() === 'li') {
       selectedListId = e.target.dataset.listId;
       save();
-      todoList();
+      todolist();
+      // todoList();
     }
   });
 
@@ -31,15 +34,16 @@ const addingEntry = () => {
     lists = lists.filter((list) => list.id !== selectedListId);
     selectedListId = null;
     save();
-    todoList();
+    todolist();
+    // todoList();
   });
 
-  newListForm.addEventListener('submit', (e) => {
+  todolist.newListForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const listName = newListInput.value;
+    const listName = todolist.newListInput.value;
     if (listName == null || listName === '') return;
     const list = createList(listName);
-    newListInput.value = null;
+    todolist.newListInput.value = null;
     lists.push(list);
     save();
     // todoList();
@@ -72,10 +76,11 @@ function renderList() {
     listElement.classList.add('list-group-item');
     listElement.innerText = list.name;
     if (list.id === selectedListId) {
-      console.log(selectedListId);
+      // console.log(selectedListId);
       listElement.classList.add('active');
+      console.log(listElement);
     }
-    listsContainer.appendChild(listElement);
+    todo.getListsContainer.appendChild(listElement);
   });
 }
 
