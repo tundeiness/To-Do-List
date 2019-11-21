@@ -1,4 +1,4 @@
-import task from './task';
+import tasks from './task';
 import todolist from './todo';
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
@@ -10,9 +10,12 @@ let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 // const newListForm = document.querySelector('[data-new-list-form]');
 // const newListInput = document.querySelector('[data-new-list-input]');
 const deleteListButton = document.querySelector('[data-delete-list-button]');
-const createList = (name) => ({ id: Date.now().toString(), name, tasks: [] });
+// const createList = (name) => (return { id: Date.now().toString(), name, tasks: [] });
+const createList = (name){
+  return { id: Date.now().toString(), name, tasks: [] };
+}
 const completedTask = document.querySelector('[data-completed-task]');
-const taskForm = task();
+const taskForm = tasks();
 const todo = todolist();
 
 const save = () => {
@@ -20,21 +23,36 @@ const save = () => {
   localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
 };
 
+function saveAndRender(){
+  save();
+  renderList();
+}
+
 const addingEntry = () => {
   todolist.listsContainer.addEventListener('click', (e) => {
     if (e.target.tagName.toLowerCase() === 'li') {
       selectedListId = e.target.dataset.listId;
-      save();
-      todolist();
+      //save();
+      saveAndRender();
+      // todolist();
       // todoList();
     }
   });
 
-  deleteListButton.addEventListener('click', (e) => {
+  // deleteListButton.addEventListener('click', (e) => {
+  //   lists = lists.filter((list) => list.id !== selectedListId);
+  //   selectedListId = null;
+  //   save();
+  //   todolist();
+  //   // todoList();
+  // });
+
+  todolist.getDeleteItems.addEventListener('click', (e) => {
     lists = lists.filter((list) => list.id !== selectedListId);
     selectedListId = null;
-    save();
-    todolist();
+    //save();
+    saveAndRender();
+    // todolist();
     // todoList();
   });
 
@@ -45,8 +63,9 @@ const addingEntry = () => {
     const list = createList(listName);
     todolist.newListInput.value = null;
     lists.push(list);
-    save();
-    todolist();
+    saveAndRender();
+    //save();
+    //todolist();
     // todoList();
   });
 };
@@ -101,7 +120,7 @@ const todoList = () => {
   clearElement(todolist.listsContainer);
   renderList();
   const selectedList = lists.find((list) => list.id === selectedListId);
-  const tasking = task();
+  const tasking = tasks();
   if (selectedListId == null) {
     tasking.getListContainer().style.display = 'none';
   } else {
