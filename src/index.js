@@ -46,6 +46,7 @@ const addingEntry = () => {
     todolist.newListInput.value = null;
     lists.push(list);
     save();
+    todolist();
     // todoList();
   });
 };
@@ -97,7 +98,7 @@ function renderTasks(task) {
 }
 
 const todoList = () => {
-  clearElement(listsContainer);
+  clearElement(todolist.listsContainer);
   renderList();
   const selectedList = lists.find((list) => list.id === selectedListId);
   const tasking = task();
