@@ -10,6 +10,13 @@ const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
 const deleteListButton = document.querySelector('[data-delete-list-button]');
 const createList = (name) => ({ id: Date.now().toString(), name, tasks: [] });
+const completedTask = document.querySelector('[data-completed-task]');
+const taskForm = task();
+
+const save = () => {
+  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
+  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
+};
 
 const addingEntry = () => {
   listsContainer.addEventListener('click', (e) => {
@@ -35,11 +42,17 @@ const addingEntry = () => {
     newListInput.value = null;
     lists.push(list);
     save();
-    todoList();
+    // todoList();
   });
 };
 
-const taskForm = task();
+completedTask.addEventListener('click', (e) => {
+  const selectedList = lists.find((list) => list.id === selectedListId);
+  selectedList.taskForm.getTaskForm = selectedList.getTaskForm.filter((tak) => !tak.complete);
+  save();
+});
+
+
 taskForm.getTaskForm().addEventListener('submit', (e) => {
   e.preventDefault();
   const taskName = taskForm.getTaskInput().value;
@@ -91,12 +104,6 @@ const todoList = () => {
   }
   clearElement(tasking.getTaskContainer());
   renderTasks(selectedList);
-};
-
-
-const save = () => {
-  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
-  localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
 };
 
 
