@@ -26,7 +26,7 @@ A Simple To-Do application
   - [License](#license)
   - [Authors](#authors)
 
-<!-- ![Restaurant Page](https://github.com/tundeiness/Restaurant/blob/feature/img/Restaurant.gif) -->
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
