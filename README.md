@@ -5,16 +5,17 @@ A Simple To-Do application
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="#">
-    <img src="/img/logo-3.png" alt="Restaurant Logo" width="180" height="180">
-  </a>
 
-  <h1 align="center">Restaurant Page</h1>
+  <h1 align="center">A Simple To-Do List application</h1>
 
   <p align="center">
-    Restaurant Page built with javascript
+    A Simple To-Do application Built with Javascript
     <br />
-    <a href="https://tundeiness.github.io/Restaurant/">View Demo</a>
+    <a href="#">View Demo</a>
+    ·
+    <a href="https://github.com/tundeiness/To-Do-List/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/tundeiness/To-Do-List/issues">Request Feature</a>
   </p>
 </p>
 
@@ -23,16 +24,17 @@ A Simple To-Do application
   - [About The Project](#about-the-project)
     - [Built With](#built-with)
   - [License](#license)
-  - [Contact](#contact)
+  - [Authors](#authors)
 
-![Restaurant Page](https://github.com/tundeiness/Restaurant/blob/feature/img/Restaurant.gif)
+<!-- ![Restaurant Page](https://github.com/tundeiness/Restaurant/blob/feature/img/Restaurant.gif) -->
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The Restaurant page project was created by the [Author](https://www.linkedin.com/in/tunde-oretade/) to show the understanding of the benefits of
-modularized code as well as the ability to set up a javascript application made
-of different modules using webpack. It also shows the understanding of the ES6
-class keyword, ES6 modules, and webpack.
+The To-Do application is a project aimed at showcasing our knowlegde of Objects,
+Factory Functions, and Module Pattern in javascript ES6. These concepts along
+with the understanding of webpack were heavily relied on while building this
+application.
+It also shows our understanding of  the concepts of Single Responsibility and Tightly Coupled Objects.
 
 
 ### Built With
@@ -46,9 +48,10 @@ class keyword, ES6 modules, and webpack.
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-<!-- CONTACT -->
-## Contact
+<!-- AUTHOR -->
 
-Tunde Oretade - [@tundeiness](https://twitter.com/tundeiness) - tundeiness@yahoo.co.uk
-Project Link: [Restaurant Page](https://github.com/tundeiness/Restaurant/tree/feature)
+## Authors
 
+This project was executed by the duo of [Olga
+Pelts](https://github.com/pelzolga123) & [Tunde
+Oretade](https://twitter.com/tundeiness)
