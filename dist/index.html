@@ -44,10 +44,13 @@
     <div class='new-task-creator'>
       <form action='' class="input-group mb-3 mt-4" data-new-task-form >
         <input type="text" data-new-task-input class='new-list form-control' placeholder="Add new task"/>
+        <input type="date" date />
+        <input type="range" priority min="0" max="5">
         <div class="input-group-append">
         <button class='btn-task btn btn-outline-secondary'>Add task</button>
         </div>
         <button class='btn btn-outline-danger' data-clear-complete-tasks-button>Delete</button>
+        <button edit>Edit</button>
       </form>
     </div>
   </div>
@@ -58,8 +61,12 @@
 <template id = 'task-template'>
     <div class="task">
       <input type="checkbox"/>
-      <label>
+      <label id = 'taskName'>
         <span class="custom-checkbox"></span>
+      </label>
+      <label id = 'taskDate'>
+      </label>
+      <label id = 'taskPriority'>
       </label>
     </div>
   </template>

@@ -11,10 +11,13 @@ const listsContainer = document.querySelector('[data-lists]');
 const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
 const deleteListButton = document.querySelector('[data-delete-list-button]');
+const editTaskButton = document.querySelector('[edit]');
 
 const tasksContainer = document.querySelector('[data-tasks]');
 const newTaskForm = document.querySelector('[data-new-task-form]');
 const newTaskInput = document.querySelector('[data-new-task-input]');
+const newTaskPriority = document.querySelector('[priority]');
+const newDateInput = document.querySelector('[date]');
 const clearCompleteTasksButton = document.querySelector('[data-clear-complete-tasks-button]');
 
 const save = () => {
@@ -26,8 +29,8 @@ function createList(name) {
   return { id: Date.now().toString(), name, tasks: [] };
 }
 
-function createTask(name) {
-  return { id: Date.now().toString(), name, complete: false };
+function createTask(name, date, priority) {
+  return { id: Date.now().toString(), name, date, priority, complete: false };
 }
 
 const todoList = () => {
@@ -50,10 +53,24 @@ listsContainer.addEventListener('click', (e) => {
   }
 });
 
+
 clearCompleteTasksButton.addEventListener('click', (e) => {
   e.preventDefault();
   const selectedList = lists.find((list) => list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter((task) => !task.complete);
+  saveAndRender();
+});
+
+editTaskButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const selectedList = lists.find((list) => list.id === selectedListId);
+ // const taskName = newTaskInput.value;
+ // const newDate = newDateInput.value;
+ // const newPriority = newTaskPriority.value;
+  const task = document.getElementById(selectedList.id);
+  console.log(task);
+  // newTaskInput.value = null;
+  // selectedList.tasks.push(task);
   saveAndRender();
 });
 
@@ -63,6 +80,7 @@ deleteListButton.addEventListener('click', (e) => {
   selectedListId = null;
   saveAndRender();
 });
+
 
 newListForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -88,8 +106,10 @@ tasksContainer.addEventListener('click', (e) => {
 newTaskForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const taskName = newTaskInput.value;
+  const newDate = newDateInput.value;
+  const newPriority = newTaskPriority.value;
   if (taskName == null || taskName === '') return;
-  const task = createTask(taskName);
+  const task = createTask(taskName, newDate, newPriority);
   newTaskInput.value = null;
   const selectedList = lists.find((list) => list.id === selectedListId);
   selectedList.tasks.push(task);

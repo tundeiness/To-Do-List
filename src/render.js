@@ -14,9 +14,13 @@ const renderTasks = (selectedList) => {
     const checkbox = taskElement.querySelector('input');
     checkbox.id = task.id;
     checkbox.checked = task.complete;
-    const label = taskElement.querySelector('label');
+    const label = taskElement.getElementById('taskName');
+    const date = taskElement.getElementById('taskDate');
+    const priority = taskElement.getElementById('taskPriority');
     label.htmlFor = task.id;
     label.append(task.name);
+    date.append(task.date);
+    priority.append(task.priority);
     tasksContainer.appendChild(taskElement);
   });
 };
