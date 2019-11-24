@@ -61,18 +61,6 @@ clearCompleteTasksButton.addEventListener('click', (e) => {
   saveAndRender();
 });
 
-editTaskButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  const selectedList = lists.find((list) => list.id === selectedListId);
- // const taskName = newTaskInput.value;
- // const newDate = newDateInput.value;
- // const newPriority = newTaskPriority.value;
-  const task = document.getElementById(selectedList.id);
-  console.log(task);
-  // newTaskInput.value = null;
-  // selectedList.tasks.push(task);
-  saveAndRender();
-});
 
 deleteListButton.addEventListener('click', (e) => {
   e.preventDefault();
