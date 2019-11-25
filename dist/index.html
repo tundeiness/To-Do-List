@@ -50,7 +50,6 @@
         <button class='btn-task btn btn-outline-secondary'>Add task</button>
         </div>
         <button class='btn btn-outline-danger' data-clear-complete-tasks-button>Delete</button>
-        <button edit>Edit</button>
       </form>
     </div>
   </div>
@@ -60,14 +59,28 @@
 
 <template id = 'task-template'>
     <div class="task">
-      <input type="checkbox"/>
-      <label id = 'taskName'>
+      <input type="checkbox" check/>
+      <label id = 'taskName' class='display'>
         <span class="custom-checkbox"></span>
+        
       </label>
-      <label id = 'taskDate'>
+      <label id = 'taskDate' class='display'>
+        
       </label>
-      <label id = 'taskPriority'>
+      <label id = 'taskPriority' class='display'>
+          
       </label>
+      <div id = 'edit-section'></div>
+    </div>
+  </template>
+
+  <template id = 'edit-template'>
+    <div id = 'edit-div'>
+      <input class='hidden-edit' id = 'edit-name'/>
+      <input class='hidden-edit' type="date" id = 'edit-date'/>
+      <input class='hidden-edit' type="range"  min="0" max="5" id ='edit-range'/>
+      <button id = 'update'>Update</button>
+      <button id = 'close'>Close</button>
     </div>
   </template>
 

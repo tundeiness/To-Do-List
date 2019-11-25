@@ -11,7 +11,6 @@ const listsContainer = document.querySelector('[data-lists]');
 const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
 const deleteListButton = document.querySelector('[data-delete-list-button]');
-const editTaskButton = document.querySelector('[edit]');
 
 const tasksContainer = document.querySelector('[data-tasks]');
 const newTaskForm = document.querySelector('[data-new-task-form]');
@@ -35,7 +34,6 @@ function createTask(name, date, priority) {
 
 const todoList = () => {
   const selectedList = lists.find((list) => list.id === selectedListId);
-  console.log(selectedList);
   clearElement(listsContainer);
   renderLists(lists, listsContainer, selectedListId);
   display(selectedList, selectedListId);
