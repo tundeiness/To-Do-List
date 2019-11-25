@@ -7,16 +7,19 @@ const renderTaskCount = (selectedList) => {
 
 const updateValues = (update, close, label, date, priority, templateDiv, btn) => {
   update.addEventListener('click', (e) => {
+    const newLabel = label;
+    const newDate = date;
+    const newPrority = priority;
     e.preventDefault();
     const editName = document.getElementById('edit-name').value;
     const editDate = document.getElementById('edit-date').value;
     const editRange = document.getElementById('edit-range').value;
-    label.innerHTML = '';
-    date.innerHTML = '';
-    priority.innerHTML = '';
-    label.append(editName);
-    date.append(editDate);
-    priority.append(editRange);
+    newLabel.innerHTML = '';
+    newDate.innerHTML = '';
+    newPrority.innerHTML = '';
+    newLabel.append(editName);
+    newDate.append(editDate);
+    newPrority.append(editRange);
   });
 
   templateDiv.setAttribute('class', 'visible');
