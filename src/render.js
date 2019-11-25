@@ -5,17 +5,15 @@ const renderTaskCount = (selectedList) => {
   listCountElement.innerText = `${incompleteTasks} ${tasksString} remaining`;
 };
 
-
 const updateValues = (update, close, label, date, priority, templateDiv, btn) => {
-  
   update.addEventListener('click', (e) => {
     e.preventDefault();
-    label.innerHTML = '';
-    date.innerHTML = '';
-    priority.innerHTML = '';
     const editName = document.getElementById('edit-name').value;
     const editDate = document.getElementById('edit-date').value;
     const editRange = document.getElementById('edit-range').value;
+    label.innerHTML = '';
+    date.innerHTML = '';
+    priority.innerHTML = '';
     label.append(editName);
     date.append(editDate);
     priority.append(editRange);
@@ -27,11 +25,12 @@ const updateValues = (update, close, label, date, priority, templateDiv, btn) =>
     e.preventDefault();
     templateDiv.setAttribute('class', 'hidden');
     btn.removeAttribute('class', 'hidden');
+    btn.setAttribute('class', 'btn btn-warning edit');
   });
 };
 
 const editTask = (btn, editing, taskName, taskDate, taskPriority, label, date, priority) => {
-  btn.setAttribute('class', 'btn btn-outline-secondary');
+  btn.setAttribute('class', 'btn btn-warning edit');
   const editTemplate = document.getElementById('edit-template');
   btn.addEventListener('click', (e) => {
     const taskElement = document.importNode(editTemplate.content, true);

@@ -36,7 +36,7 @@
 
   <div class='todo-body'>
     <div class='tasks' data-tasks>
-      <div class='task'>
+      <div class='task row'>
 
       </div>
     </div>
@@ -44,8 +44,8 @@
     <div class='new-task-creator'>
       <form action='' class="input-group mb-3 mt-4" data-new-task-form >
         <input type="text" data-new-task-input class='new-list form-control' placeholder="Add new task"/>
-        <input type="date" date />
-        <input type="range" priority min="0" max="5">
+        <input class='new-list form-control' type="date" date />
+        <input class='new-list form-control' type="range" priority min="0" max="5">
         <div class="input-group-append">
         <button class='btn-task btn btn-outline-secondary'>Add task</button>
         </div>
@@ -58,29 +58,32 @@
 </div>
 
 <template id = 'task-template'>
-    <div class="task">
+    <div class="task main card-body">
+      <div class = 'info'>
+        <div>
       <input type="checkbox" check/>
-      <label id = 'taskName' class='display'>
-        <span class="custom-checkbox"></span>
-        
-      </label>
-      <label id = 'taskDate' class='display'>
-        
-      </label>
-      <label id = 'taskPriority' class='display'>
-          
-      </label>
-      <div id = 'edit-section'></div>
+      <label id = 'taskName' class='display'></label>
+      </div>
+      <div>
+      <span>Due date:</span> 
+      <label id = 'taskDate' class='new-list form-control mt-2'></label>
+      </div>
+      <div>
+      <span>Priority: </span> 
+      <label  id = 'taskPriority' class='display'></label>
+    </div>
+    </div>
+    <div id = 'edit-section'></div>
     </div>
   </template>
 
   <template id = 'edit-template'>
     <div id = 'edit-div'>
-      <input class='hidden-edit' id = 'edit-name'/>
-      <input class='hidden-edit' type="date" id = 'edit-date'/>
-      <input class='hidden-edit' type="range"  min="0" max="5" id ='edit-range'/>
-      <button id = 'update'>Update</button>
-      <button id = 'close'>Close</button>
+      <input class='new-list form-control mt-2' id = 'edit-name'/>
+      <input class='new-list form-control mt-2' type="date" id = 'edit-date'/>
+      <input class='new-list form-control mt-2' type="range"  min="1" max="5" id ='edit-range'/>
+      <button id = 'update' class='btn btn-success mt-2'>Update</button>
+      <button id = 'close' class='btn btn-danger mt-2'>Close</button>
     </div>
   </template>
 

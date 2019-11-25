@@ -9,3 +9,18 @@ body, html{
 .hidden{
     display:none;
 }
+.main{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ced4da;
+    width:80%;
+    margin-bottom: 10px;
+}
+.tasks{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.edit{
+    margin-bottom: 10px;
+}
