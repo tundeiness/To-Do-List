@@ -1,6 +1,6 @@
 const renderTaskCount = (selectedList) => {
   const listCountElement = document.querySelector('[data-list-count]');
-  const incompleteTasks = selectedList.tasks.filter((task) => !task.complete).length;
+  const incompleteTasks = selectedList.tasks.filter(task => !task.complete).length;
   const tasksString = incompleteTasks === 1 ? 'task' : 'tasks';
   listCountElement.innerText = `${incompleteTasks} ${tasksString} remaining`;
 };
