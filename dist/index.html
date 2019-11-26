@@ -4,10 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"
-  <title>To-Do</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>To-Do List</title>
 </head>
 <body>
+<div class="container-fluid h-100">  
+<div class="row h-100">  
+<div class='all-tasks col-4 bg-dark p-3'>
+  <h2 class='class-list-title text-white'>My lists</h2>
+  <ul class = 'task-list list-group' data-lists>
+
+  </ul>
+  <form action="" data-new-list-form>
+    <div class="input-group mb-3 mt-4">
+    <input type='text' class='new-list form-control' placeholder="Add new list" data-new-list-input/>
+    <div class="input-group-append">
+    <button class='btn-list btn btn-outline-secondary'>Add list</button>
+  </div>
+    </div>
+  </form>
+  <button class='btn-delete btn btn-danger' data-delete-list-button>Delete list</button>
+</div>
+
+
+<div class='todo-list col-8 bg-light p-3' data-list-display-container>
+  <div class='todo-header'>
+    <h2 class='list-title' data-list-title>My tasks</h2>
+    <p class ='task-count' data-list-count></p>
+  </div>
+
+  <div class='todo-body'>
+    <div class='tasks' data-tasks>
+      <div class='task row'>
+
+      </div>
+    </div>
+    
+    <div class='new-task-creator'>
+      <form action='' class="input-group mb-3 mt-4" data-new-task-form >
+        <input type="text" data-new-task-input class='new-list form-control' placeholder="Add new task"/>
+        <input class='new-list form-control' type="date" date />
+        <input class='new-list form-control' type="range" priority min="0" max="5">
+        <div class="input-group-append">
+        <button class='btn-task btn btn-outline-secondary'>Add task</button>
+        </div>
+        <button class='btn btn-outline-danger' data-clear-complete-tasks-button>Delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<template id = 'task-template'>
+    <div class="task main card-body">
+      <div class = 'info'>
+        <div>
+      <input type="checkbox" check/>
+      <label id = 'taskName' class='display'></label>
+      </div>
+      <div>
+      <span>Due date:</span> 
+      <label id = 'taskDate' class='new-list form-control mt-2'></label>
+      </div>
+      <div>
+      <span>Priority: </span> 
+      <label  id = 'taskPriority' class='display'></label>
+    </div>
+    </div>
+    <div id = 'edit-section'></div>
+    </div>
+  </template>
+
+  <template id = 'edit-template'>
+    <div id = 'edit-div'>
+      <input class='new-list form-control mt-2' id = 'edit-name'/>
+      <input class='new-list form-control mt-2' type="date" id = 'edit-date'/>
+      <input class='new-list form-control mt-2' type="range"  min="1" max="5" id ='edit-range'/>
+      <button id = 'update' class='btn btn-success mt-2'>Update</button>
+      <button id = 'close' class='btn btn-danger mt-2'>Close</button>
+    </div>
+  </template>
+
   <script src='main.js'></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

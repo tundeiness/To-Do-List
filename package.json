@@ -37,5 +37,8 @@
     "url-loader": "^2.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "date-fns": "^2.8.0"
   }
 }
